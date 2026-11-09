@@ -17,8 +17,8 @@ cd "$(dirname "$0")/.."
 REPO_URL=https://github.com/Joyaroin/morioh-cho-gitops.git
 
 context="$(kubectl config current-context)"
-kubectl get node hamon >/dev/null \
-  || { echo "kubectl ($context) does not reach the home-lab node (hamon). export KUBECONFIG=~/.kube/homelab.yaml" >&2; exit 1; }
+kubectl get node hermit >/dev/null \
+  || { echo "kubectl ($context) does not reach the home-lab node (hermit). export KUBECONFIG=~/.kube/homelab.yaml" >&2; exit 1; }
 
 # The chart version is read from apps/argocd.yaml rather than repeated here, so the two can't
 # drift: a mismatch would make Argo CD's first self-sync an unplanned upgrade or downgrade.

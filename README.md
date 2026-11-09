@@ -1,8 +1,8 @@
 # morioh-cho-gitops
 
 Everything that runs on the home k3s cluster, synced by Argo CD: **[mediasafe.space](https://mediasafe.space)**
-first, and the tools beside it. The cluster is two VMs, `hamon` on the Proxmox host `jonathan` and
-`hermit` on `joseph`, mini PCs at home, reached from the internet only through a Cloudflare Tunnel.
+first, and the tools beside it. The cluster is one VM, `hermit` on the Proxmox host `joseph`, a mini
+PC at home, reached from the internet only through a Cloudflare Tunnel.
 (Morioh-cho is the town everything here lives in; this repository was `mediasafe-gitops` until it
 ran more than MediaSafe.) The app's code, its CI, and the Terraform for Cloudflare
 live in **[Joyaroin/MediaSafe](https://github.com/Joyaroin/MediaSafe)**; this repository is the
@@ -47,8 +47,8 @@ commits), and a promote workflow copies it to `values-prod.yaml`.
 ## Bootstrapping a cluster
 
 Needs k3s on the node (`bootstrap/install-k3s`) and the kubeconfig:
-`scp hamon:.kube/config ~/.kube/homelab.yaml`, with `server:` changed to
-`https://100.96.209.92:6443`, the node's Tailscale address.
+`scp hermit:.kube/config ~/.kube/homelab.yaml`, with `server:` changed to
+`https://100.80.32.26:6443`, the node's Tailscale address.
 
 ```sh
 export KUBECONFIG=~/.kube/homelab.yaml

@@ -16,7 +16,7 @@ image:
 
 replicas: 1
 
-# A node for every pod of this environment, e.g. { kubernetes.io/hostname: hamon }. Empty: any.
+# A node for every pod of this environment, e.g. { kubernetes.io/hostname: hermit }. Empty: any.
 nodeSelector: {}
 
 resources:
