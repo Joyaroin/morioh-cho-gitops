@@ -9,8 +9,9 @@ image:
 # is what keeps a write on one replica from leaving the other's cache stale.
 replicas: 2
 # Prod runs on hermit (joseph, the GEEKOM), the only node since jonathan was returned. Staging and
-# side projects share it, so a staging deploy that grows can take prod's memory; nothing limits
-# that yet. If joseph is down, so is the site, as are the control plane and Vault.
+# side projects share it; what keeps them from taking prod's memory is their memory limits (the
+# chart's `resources`, and Valkey's in templates/valkey.yaml), not a separate machine. If joseph is
+# down, so is the site, as are the control plane and Vault.
 nodeSelector:
   kubernetes.io/hostname: hermit
 sweep:
