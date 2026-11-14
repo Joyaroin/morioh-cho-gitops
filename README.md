@@ -38,7 +38,6 @@ commits), and a promote workflow copies it to `values-prod.yaml`.
 | `platform/edge/` | The one Gateway, and the Let's Encrypt issuers with their Cloudflare token |
 | `platform/tailscale-operator/` | The operator's values, and its OAuth client from Vault |
 | `platform/forgejo-projects/` | Deploys every repo in Forgejo's `projects` organisation that has `deploy/chart`, into its own `proj-*` namespaces |
-| `bootstrap/install-k3s` | Installs k3s on the node, with the settings the rest assumes. Run once per machine |
 | `bootstrap/install` | Installs Argo CD on a fresh cluster. Run once per cluster |
 | `bootstrap/vault-init` | Initialises Vault and stores the unseal key and root token in Bitwarden. Once per Vault volume |
 | `bootstrap/vault-unseal` | Unseals Vault with the key from Bitwarden. **After every Vault restart** |
@@ -46,7 +45,10 @@ commits), and a promote workflow copies it to `values-prod.yaml`.
 
 ## Bootstrapping a cluster
 
-Needs k3s on the node (`bootstrap/install-k3s`) and the kubeconfig:
+Needs k3s on the node and the kubeconfig. The VM and everything on it below Kubernetes (k3s and
+its config, the firewall, Tailscale, Vault's data directory) come from the `core-infra` repository
+on Forgejo: Terraform builds the VM, `ansible/playbooks/hermit.yml` sets it up. Then fetch the
+kubeconfig:
 `scp hermit:.kube/config ~/.kube/homelab.yaml`, with `server:` changed to
 `https://100.80.32.26:6443`, the node's Tailscale address.
 
