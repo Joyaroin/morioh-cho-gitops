@@ -6,7 +6,7 @@ gatewayListener: https-staging
 nodeSelector:
   kubernetes.io/hostname: hermit
 image:
-  tag: b2ebec306accabf41f89ec7e63c5ca8ad1609a48
+  tag: 26624726ce20506c28a7d77888da55bd28119281
 sweep:
   # Two hours before prod's, so a sweep that breaks on new code breaks here first.
   schedule: "0 7 * * *"
