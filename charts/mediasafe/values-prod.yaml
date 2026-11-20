@@ -4,7 +4,7 @@ environment: prod
 hostname: mediasafe.space
 gatewayListener: https-apex
 image:
-  tag: d4e4fb1842fe6830b4a7463a86eaf171b2c6ba13
+  tag: 937945a7cffbd13939f4cfff66f7fe8117c1e74f
 # Two, so a rolling deploy or one pod's crash leaves the site up. They share one Valkey, which
 # is what keeps a write on one replica from leaving the other's cache stale.
 replicas: 2
